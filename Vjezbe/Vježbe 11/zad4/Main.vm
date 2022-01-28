@@ -1,0 +1,14 @@
+function Main.main 1
+push constant 200
+push constant 200
+push constant 6
+call Square.new 3
+pop local 0
+push local 0
+call Square.run 1
+pop temp 0
+push local 0
+call Square.Dispose 1
+pop temp 0
+push constant 0
+return

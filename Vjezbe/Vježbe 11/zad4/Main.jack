@@ -1,0 +1,11 @@
+class Main
+{
+    function void main()
+    {
+        var Square S;
+        let S = Square.new(200, 200, 6);
+        do S.run();
+        do S.Dispose();
+        return;
+    }
+}

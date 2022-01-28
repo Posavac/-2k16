@@ -1,0 +1,29 @@
+class Main
+{
+	function void main() 
+	{	
+        var String A, B, C, D, E;
+        var int i;
+        
+        let A = "Hello ";
+        let B = "world! ";
+        
+        let C = StringLib.catString(A, B);
+        let D = StringLib.catInt(A, 125);
+        let E = StringLib.repeat(A, 5);
+        
+        do Output.printString(C);
+        do Output.println();
+        do Output.printString(D);
+        do Output.println();
+        do Output.printString(E);
+        do Output.println();
+        
+        do A.dispose();
+        do B.dispose();
+        do C.dispose();
+        do D.dispose();
+        do E.dispose();
+		return;
+	}
+}

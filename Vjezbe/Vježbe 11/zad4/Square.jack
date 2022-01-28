@@ -1,0 +1,135 @@
+class Square
+{
+    field int x, y, s;
+    
+    field int vx, vy;
+    
+    constructor Square new(int a, int b, int r)
+    {
+        let x = a;
+        let y = b;
+        let s = r;
+        do draw(true);
+        return this;
+    }
+    
+    method void draw(bool color)
+    {
+        do Screen.setColor(color);
+        do Screen.drawRectangle(x, y, x + s, y + s);
+        return;
+    }
+    
+    method void grow()
+    {
+        if (((x + s + 2) < 512) & ((y + s + 2) < 256))
+        {
+            do draw(false);
+            let s = s + 2;
+            do draw(true);
+        }
+        return;
+    }
+    
+    method void shrink()
+    {
+        if (s > 2)
+        {
+            do draw(false);
+            let s = s - 2;
+            do draw(true);
+        }
+        return;
+    }
+    
+    method void move()
+    {
+        if (~(vx = 0))
+        {
+            if ((x + vx > 0) & (x + s + vx < 512))
+            {
+                do draw(false);
+                let x = x + vx;
+                do draw(true);
+            }
+        }
+        
+        if (~(vy = 0))
+        {
+            if ((y + vy > 0) & (y + s + vy < 256))
+            {
+                do draw(false);
+                let y = y + vy;
+                do draw(true);
+            }
+        }
+        
+        return;
+    }
+    
+    method void run()
+    {
+        var int k;
+        let k = 0;
+        
+        while (true)
+        {
+            while (k = 0)
+            {
+                let k = Keyboard.keyPressed();
+                do move();
+                do Sys.wait(5);
+            }
+            
+            if (k = 81) // Q
+            {
+                do grow();
+            }
+            
+            if (k = 82) // R
+            {
+                do shrink();
+            }
+            
+            if (k = 131) // UP
+            {
+                let vy = -1;
+                let vx = 0;
+            }
+            
+            if (k = 133) // DOWN
+            {
+                let vy = 1;
+                let vx = 0;
+            }
+            
+            if (k = 130) // LEFT
+            {
+                let vx = -1;
+                let vy = 0;
+            }
+            
+            if (k = 132) // RIGHT
+            {
+                let vx = 1;
+                let vy = 0;
+            }
+            
+            if (k = 140) // escape
+            {
+                do Output.printString("gotovo!");
+                return;
+            }
+            
+            let k = 0;            
+        }
+        
+        return;
+    }
+    
+    method void Dispose()
+    {
+        do Memory.deAlloc(this);
+        return;
+    }
+}

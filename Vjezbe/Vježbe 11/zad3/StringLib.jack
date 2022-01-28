@@ -1,0 +1,57 @@
+class StringLib 
+{
+    function String catString(String A, String B)
+    {
+        var String C;
+        var int na, nb, i;
+        
+        let na = A.length();
+        let nb = B.length();
+        let C = String.new(na + nb);
+        
+        let i = 0;
+        while (i < na)
+        {
+            do C.appendChar(A.charAt(i));
+            let i = i + 1;
+        }
+        
+        let i = 0;
+        while (i < nb)
+        {
+            do C.appendChar(B.charAt(i));
+            let i = i + 1;
+        }
+        
+        return C;
+    }
+    
+    function String catInt(String A, int n)
+    {
+        var String B, C;
+        let B = String.new(6);
+        do B.setInt(n);
+        
+        let C = StringLib.catString(A, B);
+        
+        do B.dispose();
+        return C;
+    }
+    
+    function String repeat(String A, int n)
+    {
+        var String C;
+        var int i;
+        
+        let C = String.new(A.length() * n);
+        
+        let i = 0;
+        while(i < n)
+        {
+            let C = StringLib.catString(C, A);
+            let i = i + 1;
+        }
+        
+        return C;
+    }
+}

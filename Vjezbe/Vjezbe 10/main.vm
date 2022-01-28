@@ -1,0 +1,21 @@
+sp
+call main.Main 0
+ep
+
+function Main 0
+	push constant 5
+	call sum.Sum 1
+	pop static 0
+	push constant 10
+	call sum.Sum 1
+	pop static 1
+	push constant 15
+	call sum.Sum 1
+	pop static 2
+	push constant 20
+	call sum.Sum 1
+	pop static 3
+	push constant 100
+	call sum.Sum 1
+	pop static 4
+	return
